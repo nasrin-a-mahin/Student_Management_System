@@ -1,0 +1,33 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}
+Student Dashboard
+{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ request.user.username }}</h2>
+
+<div style="margin-top:20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px;">
+
+    <div style="background:#fff; padding:20px; border-radius:8px;">
+        <h4>Attendance</h4>
+        <p style="font-size:24px; font-weight:600;">85%</p>
+    </div>
+
+    <div style="background:#fff; padding:20px; border-radius:8px;">
+        <h4>Courses Enrolled</h4>
+        <p style="font-size:24px; font-weight:600;">5</p>
+    </div>
+
+    <div style="background:#fff; padding:20px; border-radius:8px;">
+        <h4>Average Marks</h4>
+        <p style="font-size:24px; font-weight:600;">78%</p>
+    </div>
+
+</div>
+
+<div style="background:#fff; margin-top:30px; padding:20px; border-radius:8px;">
+    <h3>Announcements</h3>
+    <p>No new announcements.</p>
+</div>
+{% endblock %}
