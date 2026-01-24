@@ -19,11 +19,15 @@ from django.urls import path
 from accounts import views as accounts_views 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dashboard/', accounts_views.dashboard_redirect, name='dashboard_redirect'),
-    path('admin/', accounts_views.admin_dashboard, name='admin_dashboard'),
-    path('teacher/', accounts_views.teacher_dashboard, name='teacher_dashboard'),
-    path('student/', accounts_views.student_dashboard, name='student_dashboard'),
 
-    path('login/', accounts_views.login_view, name='login_view'),
+    path('dashboard/', accounts_views.dashboard_redirect, name='dashboard_redirect'),
+
+    path('admin-dashboard/', accounts_views.admin_dashboard, name='admin_dashboard'),
+    path('teacher-dashboard/', accounts_views.teacher_dashboard, name='teacher_dashboard'),
+    path('student-dashboard/', accounts_views.student_dashboard, name='student_dashboard'),
+
+    path('login/', accounts_views.login_view, name='login'),
     path('logout/', accounts_views.login_view, name='logout'),
 ]
+
+
