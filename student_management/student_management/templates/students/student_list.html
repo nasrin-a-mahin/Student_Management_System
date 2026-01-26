@@ -1,0 +1,18 @@
+<h2>Student List</h2>
+
+<table border="1" cellpadding="10">
+  <tr>
+    <th>Roll</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Course</th>
+  </tr>
+  {% for s in students %}
+  <tr>
+    <td>{{ s.roll_number }}</td>
+    <td>{{ s.first_name }} {{ s.last_name }}</td>
+    <td>{{ s.email }}</td>
+    <td>{{ s.course }}</td>
+  </tr>
+  {% endfor %}
+</table>

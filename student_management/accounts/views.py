@@ -4,6 +4,7 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from functools import wraps
+from accounts.decorators import role_required
 # -----------------------------
 # Role-based access decorator
 # -----------------------------
@@ -11,25 +12,25 @@ from functools import wraps
 
 
 
-def role_required(role):
-    def decorator(view_func):
-        @wraps(view_func)
-        def _wrapped_view(request, *args, **kwargs):
+# def role_required(role):
+#     def decorator(view_func):
+#         @wraps(view_func)
+#         def _wrapped_view(request, *args, **kwargs):
 
-            print("Required role:", role)
-            print("User role:", getattr(request.user.profile, 'role', None))
-            print("Is superuser:", request.user.is_superuser)
+#             print("Required role:", role)
+#             print("User role:", getattr(request.user.profile, 'role', None))
+#             print("Is superuser:", request.user.is_superuser)
 
-            if request.user.is_superuser:
-                return view_func(request, *args, **kwargs)
+#             if request.user.is_superuser:
+#                 return view_func(request, *args, **kwargs)
 
-            if request.user.profile.role == role:
-                return view_func(request, *args, **kwargs)
+#             if request.user.profile.role == role:
+#                 return view_func(request, *args, **kwargs)
 
-            return HttpResponseForbidden("You are not allowed here")
+#             return HttpResponseForbidden("You are not allowed here")
 
-        return _wrapped_view
-    return decorator
+#         return _wrapped_view
+#     return decorator
 
 # -----------------------------
 # Dashboard redirect after login
