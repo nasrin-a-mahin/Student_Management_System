@@ -1,7 +1,11 @@
+<h2>{% if student %}Edit{% else %}Add{% endif %} Student</h2>
+
 <form method="post">
-  {% csrf_token %}
-  Roll No: <input name="roll_no" value="{{ student.roll_no|default:'' }}"><br>
-  Course: <input name="course" value="{{ student.course|default:'' }}"><br>
-  Year: <input name="year" value="{{ student.year|default:'' }}"><br>
-  <button type="submit">Save</button>
+    {% csrf_token %}
+    <input name="roll_no" placeholder="Roll No" value="{{ student.roll_no|default:'' }}"><br>
+    <input name="name" placeholder="Name" value="{{ student.name|default:'' }}"><br>
+    <input name="email" placeholder="Email" value="{{ student.email|default:'' }}"><br>
+    <input name="course" placeholder="Course" value="{{ student.course|default:'' }}"><br>
+
+    <button type="submit">Save</button>
 </form>
