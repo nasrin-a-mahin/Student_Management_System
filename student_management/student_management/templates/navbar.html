@@ -3,10 +3,33 @@
         <h3>Student Management System</h3>
 
         <ul style="list-style:none; display:flex; gap:20px;">
-            <li><a href="{% url 'student_dashboard' %}" style="color:#fff; text-decoration:none;">Dashboard</a></li>
+             {% if request.user.is_superuser or request.user.profile.role == 'ADMIN' %}
+                <li>
+                    <a href="{% url 'admin_dashboard' %}" style="color:#fff; text-decoration:none;">
+                        Dashboard
+                    </a>
+                </li>
+            {% elif request.user.profile.role == 'TEACHER' %}
+                <li>
+                    <a href="{% url 'teacher_dashboard' %}" style="color:#fff; text-decoration:none;">
+                        Dashboard
+                    </a>
+                </li>
+            {% elif request.user.profile.role == 'STUDENT' %}
+                <li>
+                    <a href="{% url 'student_dashboard' %}" style="color:#fff; text-decoration:none;">
+                        Dashboard
+                    </a>
+                </li>
+            {% endif %}
             <li><a href="#" style="color:#fff; text-decoration:none;">Attendance</a></li>
             <li><a href="#" style="color:#fff; text-decoration:none;">Marks</a></li>
             <li><a href="#" style="color:#fff; text-decoration:none;">Profile</a></li>
+
+            {% if request.user.is_superuser or request.user.profile.role == 'ADMIN' %}
+            <li><a href="{% url 'student_list' %}" style="color:#fff; text-decoration:none;">Manage Students</a></li>
+            {% endif %}
+
             <li><a href="{% url 'logout' %}" style="color:#fff; text-decoration:none;">Logout</a></li>
         </ul>
     </div>

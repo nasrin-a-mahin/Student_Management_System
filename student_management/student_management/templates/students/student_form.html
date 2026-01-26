@@ -1,0 +1,7 @@
+<form method="post">
+  {% csrf_token %}
+  Roll No: <input name="roll_no" value="{{ student.roll_no|default:'' }}"><br>
+  Course: <input name="course" value="{{ student.course|default:'' }}"><br>
+  Year: <input name="year" value="{{ student.year|default:'' }}"><br>
+  <button type="submit">Save</button>
+</form>
