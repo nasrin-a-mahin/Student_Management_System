@@ -22,7 +22,9 @@
                     </a>
                 </li>
             {% endif %}
+            {% if request.user.is_superuser or request.user.profile.role in 'ADMIN,TEACHER' %}
             <li><a href="{% url 'mark_attendance' %}" style="color:#fff; text-decoration:none;">Attendance</a></li>
+            {% endif %}
             <li><a href="#" style="color:#fff; text-decoration:none;">Marks</a></li>
             <li><a href="#" style="color:#fff; text-decoration:none;">Profile</a></li>
 
