@@ -12,8 +12,8 @@ def student_list(request):
 def student_create(request):
     if request.method == 'POST':
         Student.objects.create(
-            roll_no=request.POST['roll_no'],
-            name=request.POST['name'],
+            roll_number=request.POST['roll_number'],
+            first_name=request.POST['first_name'],
             email=request.POST['email'],
             course=request.POST['course'],
         )
@@ -28,9 +28,11 @@ def student_update(request, pk):
     student = Student.objects.get(pk=pk)
 
     if request.method == 'POST':
-        student.roll_no = request.POST['roll_no']
-        student.name = request.POST['name']
+        student.roll_number = request.POST['roll_number']
+        student.first_name = request.POST['first_name']
+        student.last_name = request.POST['last_name']
         student.email = request.POST['email']
+        student.date_of_birth = request.POST['date_of_birth']
         student.course = request.POST['course']
         student.save()
         return redirect('student_list')
@@ -40,8 +42,15 @@ def student_update(request, pk):
     })
 
 
+@login_required
 @role_required('ADMIN')
 def student_delete(request, pk):
-    student = get_object_or_404(Student, pk=pk)
-    student.delete()
-    return redirect('student_list')
+    student = Student.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        student.delete()
+        return redirect('student_list')
+
+    return render(request, 'students/student_confirm_delete.html', {
+        'student': student
+    })
