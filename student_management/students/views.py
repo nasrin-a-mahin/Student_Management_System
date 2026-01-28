@@ -14,7 +14,9 @@ def student_create(request):
         Student.objects.create(
             roll_number=request.POST['roll_number'],
             first_name=request.POST['first_name'],
+            last_name=request.POST['last_name'],
             email=request.POST['email'],
+            date_of_birth=request.POST['date_of_birth'],
             course=request.POST['course'],
         )
         return redirect('student_list')
