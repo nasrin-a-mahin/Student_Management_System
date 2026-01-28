@@ -33,11 +33,8 @@ urlpatterns = [
 
    path('students/', include('students.urls')),
 
-    # path('student', student_views.student_list, name='student_list'),
-    # # path('', student_views.student_list, name='student_list'),
-    # path('create/', student_views.student_create, name='student_create'),
-    # path('<int:pk>/edit/', student_views.student_update, name='student_update'),
-    # path('<int:pk>/delete/', student_views.student_delete, name='student_delete'),
+    path('attendance/', include('attendance.urls')),
+
 ]
 
 

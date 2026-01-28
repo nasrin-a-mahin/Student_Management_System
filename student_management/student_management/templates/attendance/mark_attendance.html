@@ -1,0 +1,26 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}
+admin Dashboard
+{% endblock %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <h4>Mark Attendance – {{ today }}</h4>
+
+  {% for student in students %}
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="{{ student.id }}" checked>
+      <label class="form-check-label">
+        {{ student.first_name }}
+      </label>
+    </div>
+  {% endfor %}
+
+  <button class="btn btn-success mt-3">Save Attendance</button>
+<a href="{% url 'attendance_list' %}" class="btn btn-success mt-3">
+    View Attendance
+</a>
+</form>
+{% endblock %}

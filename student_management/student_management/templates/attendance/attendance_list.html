@@ -1,0 +1,30 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}
+admin Dashboard
+{% endblock %}
+
+{% block content %}
+
+<table class="table table-bordered">
+  <tr>
+    <th>Date</th>
+    <th>Student</th>
+    <th>Status</th>
+  </tr>
+  {% for record in records %}
+  <tr>
+    <td>{{ record.date }}</td>
+    <td>{{ record.student.first_name }}</td>
+    <td>
+      {% if record.status %}
+        <span class="badge bg-success">Present</span>
+      {% else %}
+        <span class="badge bg-danger">Absent</span>
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
