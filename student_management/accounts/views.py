@@ -83,7 +83,9 @@ def student_dashboard(request):
     context = {}
     return render(request, 'student_dashboard.html', context)
 
-
+# -----------------------------
+# profile per role
+# -----------------------------
 def login_view(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -98,3 +100,6 @@ def login_view(request):
         return render(request, 'login.html', {'error': 'Invalid credentials'})
 
     return render(request, 'login.html')
+@login_required
+def profile_view(request):
+    return render(request, 'accounts/profile.html')

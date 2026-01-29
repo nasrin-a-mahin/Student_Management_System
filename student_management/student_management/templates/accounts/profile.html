@@ -1,0 +1,24 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}
+admin Dashboard
+{% endblock %}
+
+{% block content %}
+<h2>My Profile</h2>
+
+<p><strong>Username:</strong> {{ user.username }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+<p><strong>Role:</strong> {{ user.profile.role }}</p>
+
+<hr>
+{% if user.profile.role == 'STUDENT' %}
+    <p>Student Dashboard Access</p>
+{% elif user.profile.role == 'TEACHER' %}
+    <p>Teacher Dashboard Access</p>
+{% elif user.profile.role == 'ADMIN' %}
+    <p>Admin Dashboard Access</p>
+{% endif %}
+
+<a href="{% url 'dashboard_redirect' %}">⬅ Back to Dashboard</a>
+{% endblock %}

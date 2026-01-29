@@ -30,8 +30,9 @@ urlpatterns = [
 
     path('login/', accounts_views.login_view, name='login'),
     path('logout/', accounts_views.login_view, name='logout'),
+    path('accounts/', include('accounts.urls')),
 
-   path('students/', include('students.urls')),
+    path('students/', include('students.urls')),
 
     path('attendance/', include('attendance.urls')),
 
