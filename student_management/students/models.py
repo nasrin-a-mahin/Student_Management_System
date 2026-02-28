@@ -6,7 +6,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     date_of_birth = models.DateField(null=True, blank=True)
-    course = models.CharField(max_length=100)
+    # course = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 

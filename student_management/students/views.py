@@ -17,7 +17,7 @@ def student_create(request):
             last_name=request.POST['last_name'],
             email=request.POST['email'],
             date_of_birth=request.POST['date_of_birth'],
-            course=request.POST['course'],
+            # course=request.POST['course'],
         )
         return redirect('student_list')
 
@@ -35,7 +35,7 @@ def student_update(request, pk):
         student.last_name = request.POST['last_name']
         student.email = request.POST['email']
         student.date_of_birth = request.POST['date_of_birth']
-        student.course = request.POST['course']
+        # student.course = request.POST['course']
         student.save()
         return redirect('student_list')
 

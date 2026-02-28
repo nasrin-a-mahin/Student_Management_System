@@ -26,7 +26,7 @@ Student List
                         <th>Last Name</th>
                         <th>Email</th>
                         <th>DOB</th>
-                        <th>Course</th>
+                        <!-- <th>Course</th> -->
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -39,7 +39,7 @@ Student List
                         <td>{{ student.last_name }}</td>
                         <td>{{ student.email }}</td>
                         <td>{{ student.date_of_birth }}</td>
-                        <td>{{ student.course }}</td>
+                        <!-- <td>{{ student.course }}</td> -->
                         <td class="text-center">
                             <a href="{% url 'student_update' student.id %}"
                                class="btn btn-sm btn-primary">

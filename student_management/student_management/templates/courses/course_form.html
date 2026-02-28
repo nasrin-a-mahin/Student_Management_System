@@ -1,0 +1,15 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}
+admin Dashboard
+{% endblock %}
+
+{% block content %}
+<h3>Create Course</h3>
+
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="name" placeholder="Course name" required>
+  <button type="submit">Save</button>
+</form>
+{% endblock %}

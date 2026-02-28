@@ -1,0 +1,23 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}
+admin Dashboard
+{% endblock %}
+
+{% block content %}
+<h3>Assign Students to {{ course.name }}</h3>
+
+<form method="post">
+  {% csrf_token %}
+
+  {% for student in students %}
+    <label>
+      <input type="checkbox" name="students" value="{{ student.id }}"
+      {% if student in course.students.all %}checked{% endif %}>
+      {{ student.first_name }}
+    </label><br>
+  {% endfor %}
+
+  <button type="submit">Save</button>
+</form>
+{% endblock %}

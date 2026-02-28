@@ -27,7 +27,9 @@
             {% endif %}
             <li><a href="#" style="color:#fff; text-decoration:none;">Marks</a></li>
             <li><a href="{% url 'profile' %}" style="color:#fff; text-decoration:none;">Profile</a></li>
-
+            {% if request.user.is_superuser or request.user.profile.role == 'ADMIN' %}
+            <li><a href="{% url 'course_list' %}" style="color:#fff; text-decoration:none;">courses</a></li>
+            {% endif %}
             {% if request.user.is_superuser or request.user.profile.role == 'ADMIN' %}
             <li><a href="{% url 'student_list' %}" style="color:#fff; text-decoration:none;">Manage Students</a></li>
             {% endif %}
